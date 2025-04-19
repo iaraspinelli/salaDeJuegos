@@ -1,1 +1,71 @@
-<p>home works!</p>
+<!-- Cartas de Juegos -->
+<div class="main-content">
+    <div class="row">
+        <div *ngFor="let juego of juegos" class="col-md-3 d-flex justify-content-center">
+            <div class="flip-card m-3">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img [src]="juego.imagen" alt="{{ juego.nombre }}" />
+                    <h3>{{ juego.nombre }}</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <button class="btn btn-light mt-2" (click)="jugar(juego.ruta)">Jugar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="auth-warning" *ngIf="mostrarMensaje">
+    <h5>⚠️ Para jugar debes estar logueado</h5>
+    <div class="btn-group">
+        <button routerLink="/login">Ir al Login</button>
+        <button (click)="cerrarMensaje()">Cerrar</button>
+    </div>
+</div>
+
+
+
+
+<!-- Barra de navegacion
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <div class="container-fluid">
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/login" *ngIf="!usuarioLogueado">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/registro" *ngIf="!usuarioLogueado">Registro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/quien-soy">Quién Soy</a>
+            </li>
+            <li class="nav-item" *ngIf="usuarioLogueado">
+                <button class="nav-link btn btn-link text-danger p-0" (click)="logout()">Logout</button>
+            </li>
+            </ul>
+    
+            <div *ngIf="usuarioLogueado && usuario" class="d-flex align-items-center text-white">
+            <span class="me-3">👤 {{ usuario.nombre }}</span>
+            <span>📅 {{ usuario.created_at | date: 'dd/MM/yyyy HH:mm' }}</span>
+            </div>
+        </div>
+    </div>
+</nav> -->
